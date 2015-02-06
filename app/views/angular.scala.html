@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  @*<script data-main="@routes.Assets.versioned("javascripts/angular.js")" src="@routes.Assets.versioned("lib/requirejs/require.js")"></script>*@
+  <script src='@routes.Assets.versioned("javascripts/angular.js")'></script>
+  <script>
+
+    var app=angular.module("appModule", []);
+    app.controller("NameController", function($scope){
+      $scope.name=["Lolo"];
+
+      $scope.addName= function() {
+        $scope.name.push($scope.newName);
+      };
+    });
+
+  </script>
+</head>
+<body ng-app="appModule">
+  <div ng-controller="NameController">
+
+    <input ng-model="newName" type="text" /> {{name}} <br>
+    <input type="button" value="Add" ng-click="addName()" />
+  </div>
+</body>
+</html>
