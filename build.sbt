@@ -13,7 +13,8 @@ libraryDependencies ++= Seq(
 //  javaJpa.exclude("org.hibernate.javax.persistence", "hibernate-jpa-2.0-api"),
 //  "org.hibernate.javax.persistence" % "hibernate-jpa-2.1-api" % "1.0.0.Final",
   "org.hibernate" % "hibernate-entitymanager" % "4.2.16.Final", // replace by your jpa implementation
-  "org.mindrot" % "jbcrypt" % "0.3m"
+  "org.mindrot" % "jbcrypt" % "0.3m",
+  "mysql" % "mysql-connector-java" % "5.1.34"
 )
 
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  
