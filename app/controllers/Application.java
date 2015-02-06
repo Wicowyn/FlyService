@@ -75,7 +75,7 @@ public class Application extends Controller {
     }
 
     @Transactional(readOnly = true)
-    @MustAuthenticate
+//    @MustAuthenticate
     public static Result getAllUser() {
         List<User> list=JPA.em().createQuery("FROM User").getResultList();
 //        List<User> list=JPA.em().createNamedQuery("User.findAll").getResultList();
