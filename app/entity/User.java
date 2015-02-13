@@ -80,11 +80,14 @@ public class User {
         return user;
     }
 
-    public static User findByToken(String login) {
-        User user= (User) JPA.em().createQuery("FROM User WHERE token=?1")
-                .setParameter(1, login)
+    public static User findByToken(String token) {
+        return (User) JPA.em().createQuery("FROM User WHERE token=?1")
+                .setParameter(1, token)
                 .getSingleResult();
+//        try {
+//        }
+//        catch (NoResultException e){ }
 
-        return user;
+//        return null;
     }
 }

@@ -5,10 +5,10 @@
 # Home page
 GET        /                    controllers.Application.index
 GET        /test                controllers.Application.plop
-GET        /user/:id            controllers.Application.getUser(id : Integer)
-PUT        /user                controllers.Application.createUser()
-PUT        /login               controllers.Application.login()
-GET        /users               controllers.Application.getAllUser()
+GET        /user/:id            controllers.UserController.getUser(id : Integer)
+PUT        /user/register       controllers.UserController.createUser()
+PUT        /user/login          controllers.UserController.login()
+GET        /users               controllers.UserController.getAllUser()
 
 GET         /angular            controllers.Application.angular()
 # Map static resources from the /public folder to the /assets URL path
