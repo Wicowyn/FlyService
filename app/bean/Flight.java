@@ -1,5 +1,8 @@
 package bean;
 
+import javax.persistence.*;
+
+
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -7,6 +10,11 @@ import java.util.ArrayList;
 /**
  * Created by KaadArloon on 13/02/2015.
  */
+
+@Entity
+@Table(name="flights")
+@NamedNativeQuery(name = "Flight.findAll", query = "SELECT * FROM flights")
+
 public class Flight {
     private String departure = new String();
     private String arrival = new String();
