@@ -1,9 +1,15 @@
-package bean;
+package entity;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Created by KaadArloon on 13/02/2015.
  */
 public class Hotel {
+    @Id
+    @GeneratedValue
+    private int id;
     private String name = new String();
     private String adresse = new String();
 

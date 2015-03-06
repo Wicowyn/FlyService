@@ -1,11 +1,7 @@
-package bean;
+package entity;
 
 import javax.persistence.*;
-
-
 import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * Created by KaadArloon on 13/02/2015.
@@ -16,11 +12,14 @@ import java.util.ArrayList;
 @NamedNativeQuery(name = "Flight.findAll", query = "SELECT * FROM flights")
 
 public class Flight {
+    @Id
+    @GeneratedValue
+    private int id;
     private String departure = new String();
     private String arrival = new String();
     private Date dateDeparture = new Date();
     private Date dateArrival = new Date();
-    private List<Hotel> hotels = new ArrayList<Hotel>();
+//    private List<Hotel> hotels = new ArrayList<Hotel>();
 
     public Flight(String departure, String arrival, Date dateDeparture, Date dateArrival) {
         this.departure = departure;
@@ -57,19 +56,27 @@ public class Flight {
         this.dateArrival = dateArrival;
     }
 
-    public List<Hotel> getHotels() {
-        return hotels;
-    }
-    public void setHotels(List<Hotel> hotels) {
-        this.hotels = hotels;
+//    public List<Hotel> getHotels() {
+//        return hotels;
+//    }
+//    public void setHotels(List<Hotel> hotels) {
+//        this.hotels = hotels;
+//    }
+
+//    public Flight addHotel(Hotel h){
+//        hotels.add(h);
+//        return this;
+//    }
+//    public Flight addAllHotels(List<Hotel> lh){
+//        hotels.addAll(lh);
+//        return this;
+//    }
+
+    public int getId() {
+        return id;
     }
 
-    public Flight addHotel(Hotel h){
-        hotels.add(h);
-        return this;
-    }
-    public Flight addAllHotels(List<Hotel> lh){
-        hotels.addAll(lh);
-        return this;
+    public void setId(int id) {
+        this.id = id;
     }
 }

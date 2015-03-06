@@ -1,7 +1,4 @@
-package bean;
-
-import org.hibernate.annotations.Index;
-import play.db.jpa.JPA;
+package entity;
 
 import javax.persistence.*;
 
@@ -12,6 +9,9 @@ import javax.persistence.*;
 @Table(name = "advertising")
 @NamedNativeQuery(name = "Advertising.findAll", query = "SELECT * FROM Advertising")
 public class Advertising {
+    @Id
+    @GeneratedValue
+    private int id;
     private Flight flight;
 
     public Advertising() {}
@@ -29,9 +29,17 @@ public class Advertising {
     public void previsualisationAdvertising(){
         String depart = "Le vol au départ de " + flight.getDeparture() + " s'envole le " + flight.getDeparture();
         String arrive = "Le vol pour " + flight.getArrival() + " arrivera le " + flight.getDateArrival();
-        for (Hotel h : flight.getHotels()){
-            String hotel = "L'hotel " + h.getName() + " à l'adresse " + h.getAdresse()
-                    + " à encore des chambres disponnible";
-        }
+//        for (Hotel h : flight.getHotels()){
+//            String hotel = "L'hotel " + h.getName() + " à l'adresse " + h.getAdresse()
+//                    + " à encore des chambres disponnible";
+//        }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

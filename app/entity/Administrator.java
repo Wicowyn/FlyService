@@ -1,4 +1,4 @@
-package bean;
+package entity;
 
 /**
  * Created by KaadArloon on 13/02/2015.
