@@ -81,13 +81,13 @@ public class User {
     }
 
     public static User findByToken(String token) {
-        try {
-            return (User) JPA.em().createQuery("FROM User WHERE token=?1")
-                    .setParameter(1, token)
-                    .getSingleResult();
-        }
-        catch (NoResultException e){ }
+        return (User) JPA.em().createQuery("FROM User WHERE token=?1")
+                .setParameter(1, token)
+                .getSingleResult();
+//        try {
+//        }
+//        catch (NoResultException e){ }
 
-        return null;
+//        return null;
     }
 }
