@@ -15,6 +15,7 @@ public class Flight {
     @Id
     @GeneratedValue
     private int id;
+
     private String departure = new String();
     private String arrival = new String();
     private Date dateDeparture = new Date();

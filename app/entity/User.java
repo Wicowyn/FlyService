@@ -16,10 +16,13 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
+
     @Index(name = "idx_login")
     @Column(unique = true)
     private String login;
+
     private String password;
+
     private String token;
 
 

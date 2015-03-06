@@ -1,9 +1,28 @@
 package entity;
 
+import javax.persistence.*;
+
 /**
  * Created by KaadArloon on 13/02/2015.
  */
+
+@Entity
+@Table(name="administrators")
+@NamedNativeQuery(name = "Administrator.findAll", query = "SELECT * FROM administrators")
 public class Administrator {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Id
+    @GeneratedValue
+    private int id;
+
     private String firstName = new String();
     private String lastName = new String();
     private String email = new String();

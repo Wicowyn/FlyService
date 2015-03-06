@@ -7,11 +7,13 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "advertising")
-@NamedNativeQuery(name = "Advertising.findAll", query = "SELECT * FROM Advertising")
+@NamedNativeQuery(name = "Advertising.findAll", query = "SELECT * FROM advertising")
 public class Advertising {
     @Id
     @GeneratedValue
     private int id;
+
+    @OneToOne
     private Flight flight;
 
     public Advertising() {}
