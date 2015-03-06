@@ -1,8 +1,16 @@
 package bean;
 
+import org.hibernate.annotations.Index;
+import play.db.jpa.JPA;
+
+import javax.persistence.*;
+
 /**
  * Created by KaadArloon on 13/02/2015.
  */
+@Entity
+@Table(name = "advertising")
+@NamedNativeQuery(name = "Advertising.findAll", query = "SELECT * FROM Advertising")
 public class Advertising {
     private Flight flight;
 
@@ -18,5 +26,12 @@ public class Advertising {
         this.flight = flight;
     }
 
-    public void previsualisationAdvertising(){}
+    public void previsualisationAdvertising(){
+        String depart = "Le vol au départ de " + flight.getDeparture() + " s'envole le " + flight.getDeparture();
+        String arrive = "Le vol pour " + flight.getArrival() + " arrivera le " + flight.getDateArrival();
+        for (Hotel h : flight.getHotels()){
+            String hotel = "L'hotel " + h.getName() + " à l'adresse " + h.getAdresse()
+                    + " à encore des chambres disponnible";
+        }
+    }
 }
