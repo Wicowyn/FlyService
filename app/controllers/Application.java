@@ -8,6 +8,7 @@ import play.mvc.Result;
 import play.mvc.With;
 import views.html.angular;
 import views.html.index;
+import views.html.login;
 
 public class Application extends Controller {
 
@@ -17,6 +18,10 @@ public class Application extends Controller {
 
     public static Result angular() {
         return ok(angular.render());
+    }
+
+    public static Result login() {
+        return ok(login.render());
     }
 
     @With(MyAction.class)

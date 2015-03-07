@@ -76,11 +76,14 @@ public class User {
     }
 
     public static User find(String login) {
-        User user= (User) JPA.em().createQuery("FROM User WHERE login=?1")
-                .setParameter(1, login)
-                .getSingleResult();
-
-        return user;
+        try {
+            return (User) JPA.em().createQuery("FROM User WHERE login=?1")
+                    .setParameter(1, login)
+                    .getSingleResult();
+        }
+        catch (NoResultException e) {
+            return null;
+        }
     }
 
     public static User findByToken(String token) {

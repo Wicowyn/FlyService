@@ -1,7 +1,10 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.User;
 import org.mindrot.jbcrypt.BCrypt;
+import play.Logger;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 import play.libs.Json;
@@ -9,8 +12,8 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by yapiti on 13/02/15.
@@ -48,11 +51,14 @@ public class UserController extends Controller {
     }
 
     @Transactional
-    public static Result login() {
-        Map<String, String[]> map=request().body().asFormUrlEncoded();
-        User user=User.find(map.get("login")[0]);
+    public static Result login() throws IOException {
+        JsonNode jsonNode=request().body().asJson();
+        UserInput input=new ObjectMapper().readValue(jsonNode.toString(), UserInput.class);
 
-        if(user!=null && BCrypt.checkpw(map.get("password")[0], user.getPassword())) {
+        Logger.debug(input.login);
+        User user=User.find(input.login);
+
+        if(user!=null && BCrypt.checkpw(input.password, user.getPassword())) {
             user.setToken(BCrypt.hashpw(user.getId()+user.getLogin(), BCrypt.gensalt()));
             JPA.em().persist(user);
 
@@ -68,5 +74,10 @@ public class UserController extends Controller {
 //        List<User> list=JPA.em().createNamedQuery("User.findAll").getResultList();
 
         return ok(Json.toJson(list));
+    }
+
+    public static class UserInput {
+        public String login;
+        public String password;
     }
 }
