@@ -1,0 +1,17 @@
+<!doctype html>
+
+<h2>Creation de compte</h2>
+<form ng-controller="createUserController">
+    <p>Name : <br>
+        <input type="text" name="name" ng-model="name" required>
+    </p>
+    <p>Login : <br>
+        <input type="text" name="login" ng-model="login" required>
+    </p>
+    <p>Password : <br>
+        <input type="password" name="password" ng-model="password" required>
+    </p>
+    <p>
+        <input type="submit" value="Add" ng-click="tryCreateUser()" />
+    </p>
+</form>

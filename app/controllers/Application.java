@@ -7,6 +7,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.With;
 import views.html.*;
+import views.html.fly_template;
 
 public class Application extends Controller {
 
@@ -18,11 +19,16 @@ public class Application extends Controller {
         return ok(angular.render());
     }
 
-    public static Result inscription() { return ok(inscription.render());
+    public static Result inscriptionTemplate() {
+        return ok(inscription_template.render());
     }
 
     public static Result loginTemplate() {
         return ok(login_template.render());
+    }
+
+    public static Result flyTemplate() {
+        return ok(fly_template.render());
     }
 
     public static Result routing() {
