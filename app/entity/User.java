@@ -21,8 +21,9 @@ public class User {
     @Column(unique = true)
     private String login;
 
-    private String password;
+    private String name;
 
+    private String password;
     private String token;
 
 
@@ -40,6 +41,14 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {

@@ -1,7 +1,6 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.User;
 import org.mindrot.jbcrypt.BCrypt;
 import play.Logger;
@@ -36,11 +35,14 @@ public class UserController extends Controller {
 
     @Transactional
     public static Result createUser() {
-        User user=new User();
-        user.setLogin(request().body().asFormUrlEncoded().get("login")[0]);
+        JsonNode jsonNode=request().body().asJson();
+        UserInput input=Json.fromJson(jsonNode, UserInput.class);
 
-        String password=request().body().asFormUrlEncoded().get("password")[0];
-        user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
+        if(input.login==null || input.password==null) forbidden();
+        User user=new User();
+        user.setName(input.name);
+        user.setLogin(input.login);
+        user.setPassword(BCrypt.hashpw(input.password, BCrypt.gensalt()));
 
         JPA.em().persist(user);
 
@@ -53,7 +55,7 @@ public class UserController extends Controller {
     @Transactional
     public static Result login() throws IOException {
         JsonNode jsonNode=request().body().asJson();
-        UserInput input=new ObjectMapper().readValue(jsonNode.toString(), UserInput.class);
+        UserInput input=Json.fromJson(jsonNode, UserInput.class);
 
         Logger.debug(input.login);
         User user=User.find(input.login);
@@ -79,5 +81,6 @@ public class UserController extends Controller {
     public static class UserInput {
         public String login;
         public String password;
+        public String name;
     }
 }
