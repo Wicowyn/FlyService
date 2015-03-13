@@ -10,6 +10,9 @@ PUT        /user/register        controllers.UserController.createUser()
 PUT        /user/login           controllers.UserController.login()
 GET        /users                controllers.UserController.getAllUser()
 
+GET        /flight/:id           controllers.FlightController.getFlight(id : Integer)
+PUT        /flight/create        controllers.FlightController.createFlight()
+
 GET        /angular              controllers.Application.angular()
 GET        /template/login       controllers.Application.loginTemplate()
 GET        /app                  controllers.Application.routing()
