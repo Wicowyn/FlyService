@@ -1,7 +1,9 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by KaadArloon on 13/02/2015.
@@ -20,7 +22,8 @@ public class Flight {
     private String arrival = new String();
     private Date dateDeparture = new Date();
     private Date dateArrival = new Date();
-//    private List<Hotel> hotels = new ArrayList<Hotel>();
+    @ManyToMany
+    private List<Hotel> hotels = new ArrayList<Hotel>();
 
     public Flight(String departure, String arrival, Date dateDeparture, Date dateArrival) {
         this.departure = departure;
@@ -57,21 +60,21 @@ public class Flight {
         this.dateArrival = dateArrival;
     }
 
-//    public List<Hotel> getHotels() {
-//        return hotels;
-//    }
-//    public void setHotels(List<Hotel> hotels) {
-//        this.hotels = hotels;
-//    }
+    public List<Hotel> getHotels() {
+        return hotels;
+    }
+    public void setHotels(List<Hotel> hotels) {
+        this.hotels = hotels;
+    }
 
-//    public Flight addHotel(Hotel h){
-//        hotels.add(h);
-//        return this;
-//    }
-//    public Flight addAllHotels(List<Hotel> lh){
-//        hotels.addAll(lh);
-//        return this;
-//    }
+    public Flight addHotel(Hotel h){
+        hotels.add(h);
+        return this;
+    }
+    public Flight addAllHotels(List<Hotel> lh){
+        hotels.addAll(lh);
+        return this;
+    }
 
     public int getId() {
         return id;
