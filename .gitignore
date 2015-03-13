@@ -3,6 +3,7 @@ bin/
 /db
 .eclipse
 /lib/
+.idea/
 /logs/
 /modules
 /project/project
@@ -15,4 +16,3 @@ server.pid
 *.eml
 /dist/
 .cache
-.idea/

@@ -6,10 +6,7 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.With;
-import views.html.angular;
-import views.html.index;
-import views.html.inscription;
-import views.html.login;
+import views.html.*;
 
 public class Application extends Controller {
 
@@ -21,12 +18,17 @@ public class Application extends Controller {
         return ok(angular.render());
     }
 
-    public static Result login() {
-        return ok(login.render());
-    }
-
     public static Result inscription() { return ok(inscription.render());
     }
+
+    public static Result loginTemplate() {
+        return ok(login_template.render());
+    }
+
+    public static Result routing() {
+        return ok(routing.render());
+    }
+
 
     @With(MyAction.class)
     @FirstAnnotation

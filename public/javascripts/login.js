@@ -2,11 +2,7 @@
  * Created by yapiti on 06/03/15.
  */
 
-var app = angular.module ( "appModule", [
-    "loginModule"
-]);
-
-var control = angular.module("loginModule", []);
+var control = angular.module("LoginController", []);
 
 control.controller ( "LoginController", function ($scope, $http) {
     //$scope.name =[ "Lolo" ] ;
