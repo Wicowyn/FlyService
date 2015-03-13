@@ -1,7 +1,8 @@
 
 var myApp = angular.module('myApp', [
     'ngRoute',
-    'LoginController'
+    'LoginModule',
+    'createUserModule'
 ]);
 
 myApp.config(['$routeProvider',
@@ -11,7 +12,11 @@ myApp.config(['$routeProvider',
                 templateUrl: 'template/login',
                 controller: 'LoginController'
             }).
+            when('/inscription', {
+                templateUrl: 'template/inscription',
+                controller: 'createUserController'
+            }).
             otherwise({
-                redirectTo: '/inscription'
+                redirectTo: '/inscription_template'
             });
     }]);

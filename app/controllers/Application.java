@@ -18,7 +18,8 @@ public class Application extends Controller {
         return ok(angular.render());
     }
 
-    public static Result inscription() { return ok(inscription.render());
+    public static Result inscriptionTemplate() {
+        return ok(inscription_template.render());
     }
 
     public static Result loginTemplate() {

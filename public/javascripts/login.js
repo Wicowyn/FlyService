@@ -2,7 +2,7 @@
  * Created by yapiti on 06/03/15.
  */
 
-var control = angular.module("LoginController", []);
+var control = angular.module("LoginModule", []);
 
 control.controller ( "LoginController", function ($scope, $http) {
     //$scope.name =[ "Lolo" ] ;
