@@ -12,6 +12,7 @@ GET        /users                controllers.UserController.getAllUser()
 
 GET        /angular              controllers.Application.angular()
 GET        /login                controllers.Application.login()
+GET        /inscription          controllers.Application.inscription()
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file         controllers.Assets.at(path="/public", file)
 GET        /*file                controllers.Assets.versioned(path="/public", file: Asset)

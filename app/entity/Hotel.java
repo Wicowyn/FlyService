@@ -15,11 +15,11 @@ public class Hotel {
     private int id;
 
     private String name = new String();
-    private String adresse = new String();
+    private String adress = new String();
 
-    public Hotel(String name, String adresse) {
+    public Hotel(String name, String adress) {
         this.name = name;
-        this.adresse = adresse;
+        this.adress = adress;
     }
 
     public String getName() {
@@ -29,10 +29,10 @@ public class Hotel {
         this.name = name;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getAdress() {
+        return adress;
     }
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 }
