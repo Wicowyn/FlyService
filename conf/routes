@@ -3,19 +3,20 @@
 # ~~~~
 
 # Home page
-GET        /                      controllers.Application.index
-GET        /test                  controllers.Application.plop
-GET        /user/:id              controllers.UserController.getUser(id : Integer)
-PUT        /user/register         controllers.UserController.createUser()
-PUT        /user/login            controllers.UserController.login()
-GET        /users                 controllers.UserController.getAllUser()
+GET        /                            controllers.Application.index
+GET        /test                        controllers.Application.plop
+GET        /user/:id                    controllers.UserController.getUser(id : Integer)
+PUT        /user/register               controllers.UserController.createUser()
+PUT        /user/login                  controllers.UserController.login()
+GET        /users                       controllers.UserController.getAllUser()
 
-GET        /angular               controllers.Application.angular()
-GET        /template/login        controllers.Application.loginTemplate()
-GET        /template/inscription  controllers.Application.inscriptionTemplate()
-GET        /app                   controllers.Application.routing()
+GET        /angular                     controllers.Application.angular()
+GET        /template/login              controllers.Application.loginTemplate()
+GET        /template/inscription        controllers.Application.inscriptionTemplate()
+GET        /template/fly                controllers.Application.flyTemplate()
+GET        /app                         controllers.Application.routing()
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file          controllers.Assets.at(path="/public", file)
-GET        /*file                 controllers.Assets.versioned(path="/public", file: Asset)
+GET        /assets/*file                controllers.Assets.at(path="/public", file)
+GET        /*file                       controllers.Assets.versioned(path="/public", file: Asset)
 
     
