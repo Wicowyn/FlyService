@@ -17,13 +17,16 @@ public class Flight {
     @Id
     @GeneratedValue
     private int id;
-
-    private String departure = new String();
-    private String arrival = new String();
-    private Date dateDeparture = new Date();
-    private Date dateArrival = new Date();
+    private String departure;
+    private String arrival;
+    private Date dateDeparture;
+    private Date dateArrival;
     @ManyToMany
     private List<Hotel> hotels = new ArrayList<Hotel>();
+
+
+    public Flight() {
+    }
 
     public Flight(String departure, String arrival, Date dateDeparture, Date dateArrival) {
         this.departure = departure;

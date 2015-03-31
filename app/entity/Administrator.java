@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="administrators")
 @NamedNativeQuery(name = "Administrator.findAll", query = "SELECT * FROM administrators")
+@Deprecated
 public class Administrator {
 
     public int getId() {

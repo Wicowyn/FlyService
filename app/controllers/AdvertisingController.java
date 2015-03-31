@@ -1,86 +1,83 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import entity.Advertising;
+import entity.Flight;
 import entity.User;
-import org.mindrot.jbcrypt.BCrypt;
-import play.Logger;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-import play.mvc.Security;
 
-import java.io.IOException;
 import java.util.List;
 
 
 /**
- * Created by Jeremie on 13/03/2015.
+ * Created by Jeremie on 13/03/2015 and modified by Nicolas.
  */
 public class AdvertisingController extends Controller {
-    public static final String AUTH_KEY="X-Session-Token";
 
     @Transactional(readOnly = true)
-    public static Result getUser(int id) {
-        User user= JPA.em().find(User.class, id);
+    public static Result get(int id) {
+        Advertising pub= JPA.em().find(Advertising.class, id);
 
-        if(user==null) {
+        if(pub==null) {
             return ok("null");
         }
         else {
-            return ok(Json.toJson(user));
+            return ok(Json.toJson(pub));
         }
     }
 
     @Transactional
-    public static Result createUser() {
-        JsonNode jsonNode=request().body().asJson();
-        UserInput input=Json.fromJson(jsonNode, UserInput.class);
+    public static Result delete(int id) {
+        Advertising pub= JPA.em().find(Advertising.class, id);
 
-        if(input.login==null || input.password==null) forbidden();
-        User user=new User();
-        user.setName(input.name);
-        user.setLogin(input.login);
-        user.setPassword(BCrypt.hashpw(input.password, BCrypt.gensalt()));
+        if(pub!=null) {
+            JPA.em().remove(pub);
 
-        JPA.em().persist(user);
-
-        user.setToken(BCrypt.hashpw(user.getId()+user.getLogin(), BCrypt.gensalt()));
-        JPA.em().persist(user);
-
-        return ok(Json.toJson(user));
+            return ok();
+        }
+        else {
+            return noContent();
+        }
     }
 
     @Transactional
-    public static Result login() throws IOException {
+    public static Result create() {
         JsonNode jsonNode=request().body().asJson();
-        UserInput input=Json.fromJson(jsonNode, UserInput.class);
+        AdvertisingInput input=Json.fromJson(jsonNode, AdvertisingInput.class);
 
-        Logger.debug(input.login);
-        User user=User.find(input.login);
+        Flight flight=input.flight!=null ?
+                input.flight
+                : JPA.em().find(Flight.class, input.flightId);
 
-        if(user!=null && BCrypt.checkpw(input.password, user.getPassword())) {
-            user.setToken(BCrypt.hashpw(user.getId()+user.getLogin(), BCrypt.gensalt()));
-            JPA.em().persist(user);
+        if(flight!=null) {
+            Advertising advertising=new Advertising();
 
-            return ok(Json.toJson(user));
+            advertising.setFlight(flight);
+            advertising.setText(input.text);
+
+            return ok(Json.toJson(advertising.getId()));
         }
-        else return forbidden();
+        else {
+            return badRequest("Flight id "+input.flightId+" not found");
+        }
     }
 
     @Transactional(readOnly = true)
-    @Security.Authenticated(Secured.class)
-    public static Result getAllUser() {
-        List<User> list=JPA.em().createQuery("FROM User").getResultList();
-//        List<User> list=JPA.em().createNamedQuery("User.findAll").getResultList();
+//    @Security.Authenticated(Secured.class)
+    public static Result getAll() {
+        List<User> list=JPA.em().createQuery("FROM Advertising").getResultList();
 
         return ok(Json.toJson(list));
     }
 
-    public static class UserInput {
-        public String login;
-        public String password;
-        public String name;
+    public static class AdvertisingInput {
+        public int flightId;
+        public Flight flight;
+        public String text;
     }
+
 }

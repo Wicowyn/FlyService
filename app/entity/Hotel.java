@@ -13,26 +13,40 @@ public class Hotel {
     @Id
     @GeneratedValue
     private int id;
+    private String name;
+    private String address;
 
-    private String name = new String();
-    private String adress = new String();
 
-    public Hotel(String name, String adress) {
+    public Hotel() {
+
+    }
+
+    public Hotel(String name, String address) {
         this.name = name;
-        this.adress = adress;
+        this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
-    public void setAdress(String adress) {
-        this.adress = adress;
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

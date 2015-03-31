@@ -12,11 +12,13 @@ public class Advertising {
     @Id
     @GeneratedValue
     private int id;
-
     @OneToOne
     private Flight flight;
+    private String text;
+
 
     public Advertising() {}
+
     public Advertising(Flight flight) {
         this.flight = flight;
     }
@@ -24,8 +26,17 @@ public class Advertising {
     public Flight getFlight() {
         return flight;
     }
+
     public void setFlight(Flight flight) {
         this.flight = flight;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public void previsualisationAdvertising(){
