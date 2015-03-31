@@ -2,6 +2,7 @@
 var myApp = angular.module('myApp', [
     'ngRoute',
     'flyModule',
+    'hotelModule',
     'LoginModule',
     'createUserModule'
 ]);
@@ -12,6 +13,10 @@ myApp.config(['$routeProvider',
             when('/fly', {
                 templateUrl: 'template/fly',
                 controller: 'flyController'
+            })
+            .when('/hotel', {
+                templateUrl: 'template/hotel',
+                controller: 'hotelController'
             }).
             when('/login', {
                 templateUrl: 'template/login',

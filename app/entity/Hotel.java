@@ -11,6 +11,7 @@ public class Hotel {
     private int id;
     private String name;
     private String address;
+    private String description;
 
 
     public Hotel() {
@@ -44,5 +45,13 @@ public class Hotel {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

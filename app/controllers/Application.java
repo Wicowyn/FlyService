@@ -7,7 +7,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.With;
 import views.html.*;
-import views.html.fly_template;
 
 public class Application extends Controller {
 
@@ -29,6 +28,10 @@ public class Application extends Controller {
 
     public static Result flyTemplate() {
         return ok(fly_template.render());
+    }
+
+    public static Result hotelTemplate() {
+        return ok(hotel_template.render());
     }
 
     public static Result routing() {

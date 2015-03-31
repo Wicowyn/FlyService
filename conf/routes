@@ -28,6 +28,8 @@ DELETE        /flight/:id            controllers.FlightController.delete(id : In
 
 GET           /angular               controllers.Application.angular()
 GET           /template/login        controllers.Application.loginTemplate()
+GET           /template/fly          controllers.Application.flyTemplate()
+GET           /template/hotel        controllers.Application.hotelTemplate()
 GET           /app                   controllers.Application.routing()
 #GET        /inscription          controllers.Application.inscription()
 # Map static resources from the /public folder to the /assets URL path
