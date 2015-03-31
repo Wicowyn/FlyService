@@ -5,9 +5,6 @@ import play.db.jpa.JPA;
 
 import javax.persistence.*;
 
-/**
- * Created by yapiti on 06/01/15.
- */
 @Entity
 @Table(name = "users")
 @NamedNativeQuery(name = "User.findAll", query = "SELECT * FROM users")
