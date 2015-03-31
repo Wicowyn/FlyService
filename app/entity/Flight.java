@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by KaadArloon on 13/02/2015.
- */
-
 @Entity
 @Table(name="flights")
 @NamedNativeQuery(name = "Flight.findAll", query = "SELECT * FROM flights")

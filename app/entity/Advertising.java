@@ -2,9 +2,6 @@ package entity;
 
 import javax.persistence.*;
 
-/**
- * Created by KaadArloon on 13/02/2015.
- */
 @Entity
 @Table(name = "advertising")
 @NamedNativeQuery(name = "Advertising.findAll", query = "SELECT * FROM advertising")

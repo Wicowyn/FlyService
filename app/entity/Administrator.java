@@ -2,10 +2,6 @@ package entity;
 
 import javax.persistence.*;
 
-/**
- * Created by KaadArloon on 13/02/2015.
- */
-
 @Entity
 @Table(name="administrators")
 @NamedNativeQuery(name = "Administrator.findAll", query = "SELECT * FROM administrators")
