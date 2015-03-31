@@ -3,33 +3,35 @@
 # ~~~~
 
 # Home page
-GET        /                      controllers.Application.index
-GET        /test                  controllers.Application.plop
+GET           /                      controllers.Application.index
+GET           /test                  controllers.Application.plop
 
-GET        /user/:id              controllers.UserController.getUser(id : Integer)
-PUT        /user/register         controllers.UserController.createUser()
-PUT        /user/login            controllers.UserController.login()
-GET        /users                 controllers.UserController.getAllUser()
+GET           /user/:id              controllers.UserController.getUser(id : Integer)
+PUT           /user/register         controllers.UserController.createUser()
+PUT           /user/login            controllers.UserController.login()
+GET           /users                 controllers.UserController.getAllUser()
 
-PUT        /hotel/create          controllers.HotelController.create()
-GET        /hotel/get/:id         controllers.HotelController.get(id : Integer)
-GET        /hotel/list            controllers.HotelController.getAll()
-DELETE     /hotel/:id             controllers.HotelController.delete(id : Integer)
+PUT           /hotel/create          controllers.HotelController.create()
+GET           /hotel/get/:id         controllers.HotelController.get(id : Integer)
+GET           /hotel/list            controllers.HotelController.getAll()
+DELETE        /hotel/:id             controllers.HotelController.delete(id : Integer)
 
-PUT        /pub/create            controllers.AdvertisingController.create()
-GET        /pub/get/:id           controllers.AdvertisingController.get(id : Integer)
-GET        /pub/list              controllers.AdvertisingController.getAll()
-DELETE     /pub/:id             controllers.AdvertisingController.delete(id : Integer)
+PUT           /pub/create            controllers.AdvertisingController.create()
+GET           /pub/get/:id           controllers.AdvertisingController.get(id : Integer)
+GET           /pub/list              controllers.AdvertisingController.getAll()
+DELETE        /pub/:id               controllers.AdvertisingController.delete(id : Integer)
 
-GET        /flight/:id            controllers.FlightController.getFlight(id : Integer)
-PUT        /flight/create         controllers.FlightController.createFlight()
+PUT           /flight/create         controllers.FlightController.create()
+GET           /flight/get/:id        controllers.FlightController.get(id : Integer)
+GET           /flight/list           controllers.FlightController.getAll()
+DELETE        /flight/:id            controllers.FlightController.delete(id : Integer)
 
-GET        /angular               controllers.Application.angular()
-GET        /template/login        controllers.Application.loginTemplate()
-GET        /app                   controllers.Application.routing()
+GET           /angular               controllers.Application.angular()
+GET           /template/login        controllers.Application.loginTemplate()
+GET           /app                   controllers.Application.routing()
 #GET        /inscription          controllers.Application.inscription()
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file          controllers.Assets.at(path="/public", file)
-GET        /*file                 controllers.Assets.versioned(path="/public", file: Asset)
+GET           /assets/*file          controllers.Assets.at(path="/public", file)
+GET           /*file                 controllers.Assets.versioned(path="/public", file: Asset)
 
     
