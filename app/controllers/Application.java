@@ -7,7 +7,7 @@ import views.html.*;
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(main.render("FlyService - The service full of flies", login_template.render()));
+        return redirect("/app#/fly");
     }
 
     public static Result angular() {
