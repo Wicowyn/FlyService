@@ -5,13 +5,21 @@
 var control = angular.module('flyModule', []);
 
 control.controller ( "flyController", function ($scope, $http) {
-    $scope.data = [
-        {id:1, title:'Foo', desc:'More stuff about this here', category_name:'Category 1'},
-        {id:2, title:'Goo', desc:'More stuff about this here', category_name:'Category 2'},
-        {id:3, title:'Roo', desc:'Blah details on Roo are here', category_name:'Category 1'},
-        {id:4, title:'Hoo', desc:'More stuff about Hoo here', category_name:'Category 2'},
-        {id:5, title:'Woo', desc:'More stuff about this here', category_name:'Category 3'}
-    ];
+    $scope.data = [];
+
+    $http.get("/flight/list")
+        .success(function(data, status, headers, config) {
+            $scope.data=data;
+        });
+
+    $scope.onDelete = function (index) {
+        $http.delete("/flight/"+$scope.data[index].id)
+            .success(function(rData, status, headers, config) {
+
+            });
+
+        $scope.data.splice(index, 1);
+    };
 
     $scope.setSelectedItem = function(i){
         $scope.selectedItem = i;
@@ -23,18 +31,18 @@ control.controller ( "flyController", function ($scope, $http) {
         }
     };
 
-        $scope.alerts = [
-            { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-            { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-        ];
+    $scope.alerts = [
+        { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+        { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+    ];
 
-        $scope.addAlert = function() {
-            $scope.alerts.push({msg: 'Another alert!'});
-        };
+    $scope.addAlert = function() {
+        $scope.alerts.push({msg: 'Another alert!'});
+    };
 
-        $scope.closeAlert = function(index) {
-            $scope.alerts.splice(index, 1);
-        };
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
+    };
 
     /*
     angular.module('ui.bootstrap.demo').controller('AlertDemoCtrl', function ($scope) {

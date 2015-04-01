@@ -1,5 +1,8 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,6 +34,7 @@ public class Flight {
         this.dateArrival = dateArrival;
     }
 
+    @JsonProperty("start")
     public String getDeparture() {
         return departure;
     }
@@ -38,6 +42,7 @@ public class Flight {
         this.departure = departure;
     }
 
+    @JsonProperty("end")
     public String getArrival() {
         return arrival;
     }
@@ -45,6 +50,8 @@ public class Flight {
         this.arrival = arrival;
     }
 
+    @JsonProperty("start_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyy")
     public Date getDateDeparture() {
         return dateDeparture;
     }
@@ -52,6 +59,8 @@ public class Flight {
         this.dateDeparture = dateDeparture;
     }
 
+    @JsonProperty("end_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyy")
     public Date getDateArrival() {
         return dateArrival;
     }
@@ -59,6 +68,7 @@ public class Flight {
         this.dateArrival = dateArrival;
     }
 
+    @JsonProperty("hotels")
     public List<Hotel> getHotels() {
         return hotels;
     }
@@ -75,6 +85,7 @@ public class Flight {
         return this;
     }
 
+    @JsonProperty("id")
     public int getId() {
         return id;
     }
