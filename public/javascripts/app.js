@@ -4,7 +4,8 @@ var myApp = angular.module('myApp', [
     'flyModule',
     'hotelModule',
     'LoginModule',
-    'createUserModule'
+    'createUserModule',
+    'filters'
 ]);
 
 myApp.config(['$routeProvider',
