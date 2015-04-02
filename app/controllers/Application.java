@@ -18,6 +18,14 @@ public class Application extends Controller {
         return ok(inscription_template.render());
     }
 
+    public static Result contactTemplate() {
+        return ok(contact.render());
+    }
+
+    public static Result aboutTemplate() {
+        return ok(about.render());
+    }
+
     public static Result loginTemplate() {
         return ok(login_template.render());
     }

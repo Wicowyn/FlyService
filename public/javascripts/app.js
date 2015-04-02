@@ -27,6 +27,12 @@ myApp.config(['$routeProvider',
                 templateUrl: 'template/inscription',
                 controller: 'createUserController'
             }).
+            when('/contact', {
+                templateUrl: 'template/contact'
+            }).
+            when('/about', {
+                templateUrl: 'template/about'
+            }).
             otherwise({
                 redirectTo: '/inscription_template'
             });
