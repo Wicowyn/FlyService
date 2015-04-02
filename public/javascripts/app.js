@@ -18,22 +18,26 @@ myApp.config(['$routeProvider',
             .when('/hotel', {
                 templateUrl: 'template/hotel',
                 controller: 'hotelController'
-            }).
-            when('/login', {
+            })
+            .when('/createhotel', {
+                templateUrl: 'template/hotel',
+                controller: 'hotelController'
+            })
+            .when('/login', {
                 templateUrl: 'template/login',
                 controller: 'LoginController'
-            }).
-            when('/inscription', {
+            })
+            .when('/inscription', {
                 templateUrl: 'template/inscription',
                 controller: 'createUserController'
-            }).
-            when('/contact', {
+            })
+            .when('/contact', {
                 templateUrl: 'template/contact'
-            }).
-            when('/about', {
+            })
+            .when('/about', {
                 templateUrl: 'template/about'
-            }).
-            otherwise({
-                redirectTo: '/inscription_template'
+            })
+            .otherwise({
+                redirectTo: '/login'
             });
     }]);
