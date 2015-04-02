@@ -67,26 +67,15 @@ control.controller ( "hotelController", function ($scope, $http) {
 control.controller ( "hotelCreateController", function ($scope, $http) {
     $scope.data = [];
 
-    $http.put("/hotel/create", $scope.data)
-        .success(function(rData, status, headers, config) {
-            console.log(rData);
-            $scope.data=rData;
-        });
+    $scope.tryCreateHotel= function ( ) {
 
-    $scope.setSelectedItem = function(i){
-        $scope.selectedItem = i;
-    };
-
-    $scope.alerts = [
-        { type: 'danger', msg: 'Fichtre! La requête était plus grosse que ta mère et c\'est pas passé.' },
-        { type: 'success', msg: 'Bien ouéj! Maintenant l\'hotel fait partie de la famille.' }
-    ];
-
-    $scope.addAlert = function() {
-        $scope.alerts.push({msg: 'Another alert!'});
-    };
-
-    $scope.closeAlert = function(index) {
-        $scope.alerts.splice(index, 1);
+        $http.put("/hotel/create", {
+            name : $scope.name,
+            adresse : $scope.adr,
+            description : $scope.desc
+        })
+            .success(function(data, status, headers, config) {
+                console.log(data);
+            });
     };
 });

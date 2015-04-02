@@ -17,11 +17,11 @@ myApp.config(['$routeProvider',
             })
             .when('/hotel', {
                 templateUrl: 'template/hotel',
-                controller: 'hotelController'
+                controller: 'listHotelController'
             })
             .when('/createhotel', {
                 templateUrl: 'template/hotel',
-                controller: 'hotelController'
+                controller: 'createHotelController'
             })
             .when('/login', {
                 templateUrl: 'template/login',
