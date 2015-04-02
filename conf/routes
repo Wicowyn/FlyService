@@ -2,6 +2,7 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# ------------------------------- CONTROLLERS -------------------------------
 # Home page
 GET           /                      controllers.Application.index
 
@@ -25,13 +26,14 @@ GET           /flight/get/:id        controllers.FlightController.get(id : Integ
 GET           /flight/list           controllers.FlightController.getAll()
 DELETE        /flight/:id            controllers.FlightController.delete(id : Integer)
 
+
+
+# ------------------------------- VIEWS -------------------------------
 GET           /angular               controllers.Application.angular()
 GET           /template/login        controllers.Application.loginTemplate()
 GET           /template/fly          controllers.Application.flyTemplate()
 GET           /template/hotel        controllers.Application.hotelTemplate()
 GET           /template/inscription  controllers.Application.inscriptionTemplate()
-GET           /template/about        controllers.Application.aboutTemplate()
-GET           /template/contact        controllers.Application.contactTemplate()
 GET           /app                   controllers.Application.routing()
 # Map static resources from the /public folder to the /assets URL path
 GET           /assets/*file          controllers.Assets.at(path="/public", file)

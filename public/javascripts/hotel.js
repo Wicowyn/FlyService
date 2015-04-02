@@ -4,6 +4,7 @@
 
 var control = angular.module('hotelModule', []);
 
+/********************* LISTING DES HOTELS ********************/
 control.controller ( "hotelController", function ($scope, $http) {
     $scope.data = [];
 
@@ -62,8 +63,30 @@ control.controller ( "hotelController", function ($scope, $http) {
     });*/
 });
 
+/********************* CREATION D'UN HOTEL ********************/
+control.controller ( "hotelCreateController", function ($scope, $http) {
+    $scope.data = [];
 
+    $http.put("/hotel/create", $scope.data)
+        .success(function(rData, status, headers, config) {
+            console.log(rData);
+            $scope.data=rData;
+        });
 
+    $scope.setSelectedItem = function(i){
+        $scope.selectedItem = i;
+    };
 
+    $scope.alerts = [
+        { type: 'danger', msg: 'Fichtre! La requête était plus grosse que ta mère et c\'est pas passé.' },
+        { type: 'success', msg: 'Bien ouéj! Maintenant l\'hotel fait partie de la famille.' }
+    ];
 
-//$(document).ready(function() {});
+    $scope.addAlert = function() {
+        $scope.alerts.push({msg: 'Another alert!'});
+    };
+
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
+    };
+});

@@ -1,94 +1,4 @@
-@*<!DOCTYPE html>
-
-@*Source : http://www.bootply.com/9WX8swMzSC#*@
-@*<h2>Vols disponibles</h2>
-<div ng-controller="flyController">
-<h3>Angular Starter With Data List and Modals</h3>
-<ul class="list-unstyled">
-<li data-ng-repeat="item in data track by $index">
-<label class="customLabel" id="{{item.id}}"><a href="" ng-click="setSelectedItem($index)" data-toggle="modal" data-target="#detailsModal">{{item.title}} - {{item.category_name}}</a></label>
-<div class="pull-right actions">
-<a href="" class="trash" data-toggle="modal" data-target="#deleteModal" ng-click="setSelectedItem($index)">x</a>
-</div>
-</li>
-</ul>
-
-<div id="detailsModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-<div class="modal-dialog modal-sm">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-<h4 class="modal-title">{{data[selectedItem].title}} Details</h4>
-</div>
-<div class="modal-body">
-<div class="modalMsg"><p>id:{{data[selectedItem].id}} - {{data[selectedItem].desc}}</p></div>
-<div class="actionsBtns">
-<button class="btn btn-default" data-dismiss="modal">OK</button>
-</div>
-</div>
-</div>
-</div>
-</div><!--/modal-->
-
-<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-<div class="modal-dialog modal-sm">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-<h4 class="modal-title" id="myModalLabel">Confirm</h4>
-</div>
-<div class="modal-body">
-<div class="modalMsg"><p>Are you sure want to remove item #{{selectedItem+1}}?</p></div>
-<div class="actionsBtns">
-<button class="btn btn-default" ng-click="deleteItem()" data-dismiss="modal">Yes</button>
-<button class="btn btn-default" data-dismiss="modal">No</button>
-</div>
-</div>
-</div>
-</div>
-</div><!--/modal-->
-
-<div >
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-<button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
-</div>
-
-@* <div ng-controller="AlertDemoCtrl">
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-<button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
-</div>*@
-
-@*</div><!--/container-->
-*@
 <!DOCTYPE html>
-@*<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="images/favicon.ico">
-<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.ico")">
-
-<title>Off Canvas Template for Bootstrap</title>
-
-<!-- Bootstrap core CSS -->
-<link href="C:\Users\jbleh_000\Documents\UBO-Master-Tiil-2\IntelliJ_IDEA\FlyService\public\bootstrap\css\bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="C:\Users\jbleh_000\Documents\UBO-Master-Tiil-2\IntelliJ_IDEA\FlyService\public\bootstrap\css\offcanvas.css" rel="stylesheet">
-
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-</head>*@
 <div class="container">
 
     <div class="row row-offcanvas row-offcanvas-right">
@@ -101,10 +11,29 @@
                 <h1>Hôtels</h1>
                 <p>Réserver votre hôtel avec <b>FlyService</b>, c’est l’assurance de trouver facilement et rapidement un hôtel aux prestations de qualité et au meilleur prix en France comme à l'étranger.</p>
             </div>
+
+            <!----- CREATE HOTEL ------>
+            <div class="container">
+
+                <form class="form-signin">
+                    <h2 class="form-signin-heading">Nouvel hôtel :</h2>
+                    <label for="InputName" class="sr-only">Nom</label>
+                    <input type="text" id="InputName" class="form-control" placeholder="Nom" ng-model="name" required autofocus>
+                    <label for="adr" class="sr-only">Adresse</label>
+                    <input type="text" id="adr" class="form-control" placeholder="Adresse" ng-model="adr" required>
+                    <label for="Description" class="sr-only">Description</label>
+                    <input type="text" id="Description" class="form-control" placeholder="Description" ng-model="desc" required>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="tryCreateUser()">Ajouter un hotel</button>
+                </form>
+
+            </div> <!-- /container -->
+
+
+            <!----- LIST HOTEL ------>
             <div class="row">
                 <div class="col-xs-6 col-lg-4" data-ng-repeat="item in data">
                     <h2>{{item.name|truncate:17}}</h2>
-                    <p><b>Adresse : </b ng-show="item.address != null">{{item.address|truncate:28}}</p>
+                    <p><b>Adresse : </b> ng-show="item.address != null">{{item.address|truncate:28}}</p>
                     <p><b>Description : </b></p>
                     <p ng-show="item.description != null">{{item.description|truncate:70}}</p>
                     <p ng-show="item.description == null">Aucune description<br/> <br/></p>
