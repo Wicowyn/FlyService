@@ -61,7 +61,6 @@
 @*</div><!--/container-->
 *@
 <!DOCTYPE html>
-<html lang="en">
     @*<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -91,7 +90,6 @@
     <![endif]-->
     </head>*@
 
-<body>
     <div class="container">
 
         <div class="row row-offcanvas row-offcanvas-right">
@@ -106,11 +104,13 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6 col-lg-4" data-ng-repeat="item in data">
-                        <h2>{{item.name|truncate:19}}</h2>
-                        <p><b>Adresse : </b>{{item.address|truncate:25}}</p>
+                        <h2>{{item.name|truncate:17}}</h2>
+                        <p><b>Adresse : </b ng-show="item.address != null">{{item.address|truncate:28}}</p>
                         <p><b>Description : </b></p>
-                        <p>{{item.description|truncate:25}}</p>
+                            <p ng-show="item.description != null">{{item.description|truncate:70}}</p>
+                            <p ng-show="item.description == null">Aucune description<br/><br/></p>
                         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                        <p><a class="btn btn-default" ng-click="onDelete($index)">Delete</a></p>
                     </div> <!--/.col-xs-6.col-lg-4-->
                 </div> <!--/row-->
             </div> <!--/.col-xs-12.col-sm-9-->
@@ -120,15 +120,11 @@
                     <a class="list-group-item active" align="center">Visualiser</a>
                     <a href="#fly" class="list-group-item">Nos Vols</a>
                     <a href="#hotel" class="list-group-item">Nos Hôtels</a>
+                    <a class="list-group-item active" align="center">Créer</a>
+                    <a href="#createfly" class="list-group-item">Un Vol</a>
+                    <a href="#createhotel" class="list-group-item">Un Hôtel</a>
                 </div>
             </div> <!--/.sidebar-offcanvas-->
         </div> <!--/row-->
 
-        <hr>
-
-        <footer>
-            <p>&copy; Company 2014</p>
-        </footer>
     </div> <!--/.container-->
-</body>
-</html>

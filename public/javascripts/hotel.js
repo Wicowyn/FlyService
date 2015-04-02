@@ -13,6 +13,15 @@ control.controller ( "hotelController", function ($scope, $http) {
             $scope.data=rData;
         });
 
+    $scope.onDelete = function (index) {
+        $http.delete("/hotel/"+$scope.data[index].id)
+            .success(function(rData, status, headers, config) {
+
+            });
+
+        $scope.data.splice(index, 1);
+    };
+
     $scope.setSelectedItem = function(i){
         $scope.selectedItem = i;
     };
