@@ -62,7 +62,31 @@ control.controller ( "flyController", function ($scope, $http) {
 });
 
 
+control.controller ( "createFlyController", function ($scope, $http) {
+    $scope.hotels = [];
+    $scope.hotelSelected = null;
 
+    $http.get("/hotel/list", {})
+        .success(function(data, status, headers, config) {
+            $scope.hotels=data;
+            $scope.hotelSelected=$scope.hotels[0];
+        });
 
+    $scope.hotelChoosed = [];
+
+    $scope.create= function ( ) {
+        console.log("create");
+        $http.put("/flight", {
+            "start" : $scope.start,
+            "end" : $scope.end,
+            "start_date" : $scope.start_date,
+            "end_date" : $scope.end_date,
+            "hotels" : [$scope.hotelSelected.id]
+        })
+            .success(function(data, status, headers, config) {
+                console.log(data);
+            });
+    };
+});
 
 //$(document).ready(function() {});

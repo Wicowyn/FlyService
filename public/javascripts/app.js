@@ -15,6 +15,14 @@ myApp.config(['$routeProvider',
                 templateUrl: 'template/fly',
                 controller: 'flyController'
             })
+            .when('/hotel', {
+                templateUrl: 'template/hotel',
+                controller: 'listHotelController'
+            })
+            .when('/create_fly', {
+                templateUrl: 'template/fly_create',
+                controller: 'createFlyController'
+            })
             .when('/listhotel', {
                 templateUrl: 'template/listhotel',
                 controller: 'listHotelController'
