@@ -5,7 +5,7 @@
 var control = angular.module('hotelModule', []);
 
 /********************* LISTING DES HOTELS ********************/
-control.controller ( "hotelController", function ($scope, $http) {
+control.controller ( "listHotelController", function ($scope, $http) {
     $scope.data = [];
 
     $http.get("/hotel/list")
@@ -64,8 +64,7 @@ control.controller ( "hotelController", function ($scope, $http) {
 });
 
 /********************* CREATION D'UN HOTEL ********************/
-control.controller ( "hotelCreateController", function ($scope, $http) {
-    $scope.data = [];
+control.controller ( "createHotelController", function ($scope, $http) {
 
     $scope.tryCreateHotel= function ( ) {
 
