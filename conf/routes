@@ -20,7 +20,7 @@ GET           /pub/get/:id                 controllers.AdvertisingController.get
 GET           /pub/list                    controllers.AdvertisingController.getAll()
 DELETE        /pub/:id                     controllers.AdvertisingController.delete(id : Integer)
 
-PUT           /flight               controllers.FlightController.create()
+PUT           /flight                      controllers.FlightController.create()
 GET           /flight/get/:id              controllers.FlightController.get(id : Integer)
 GET           /flight/list                 controllers.FlightController.getAll()
 DELETE        /flight/:id                  controllers.FlightController.delete(id : Integer)

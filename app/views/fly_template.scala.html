@@ -1,5 +1,94 @@
+@*<!DOCTYPE html>
 
+@*Source : http://www.bootply.com/9WX8swMzSC#*@
+@*<h2>Vols disponibles</h2>
+<div ng-controller="flyController">
+<h3>Angular Starter With Data List and Modals</h3>
+<ul class="list-unstyled">
+<li data-ng-repeat="item in data track by $index">
+<label class="customLabel" id="{{item.id}}"><a href="" ng-click="setSelectedItem($index)" data-toggle="modal" data-target="#detailsModal">{{item.title}} - {{item.category_name}}</a></label>
+<div class="pull-right actions">
+<a href="" class="trash" data-toggle="modal" data-target="#deleteModal" ng-click="setSelectedItem($index)">x</a>
+</div>
+</li>
+</ul>
+
+<div id="detailsModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+<h4 class="modal-title">{{data[selectedItem].title}} Details</h4>
+</div>
+<div class="modal-body">
+<div class="modalMsg"><p>id:{{data[selectedItem].id}} - {{data[selectedItem].desc}}</p></div>
+<div class="actionsBtns">
+<button class="btn btn-default" data-dismiss="modal">OK</button>
+</div>
+</div>
+</div>
+</div>
+</div><!--/modal-->
+
+<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+<h4 class="modal-title" id="myModalLabel">Confirm</h4>
+</div>
+<div class="modal-body">
+<div class="modalMsg"><p>Are you sure want to remove item #{{selectedItem+1}}?</p></div>
+<div class="actionsBtns">
+<button class="btn btn-default" ng-click="deleteItem()" data-dismiss="modal">Yes</button>
+<button class="btn btn-default" data-dismiss="modal">No</button>
+</div>
+</div>
+</div>
+</div>
+</div><!--/modal-->
+
+<div >
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+<button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+</div>
+
+@* <div ng-controller="AlertDemoCtrl">
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+<button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+</div>*@
+
+@*</div><!--/container-->
+*@
 <!DOCTYPE html>
+@*<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="images/favicon.ico">
+<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.ico")">
+
+<title>Off Canvas Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="C:\Users\jbleh_000\Documents\UBO-Master-Tiil-2\IntelliJ_IDEA\FlyService\public\bootstrap\css\bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="C:\Users\jbleh_000\Documents\UBO-Master-Tiil-2\IntelliJ_IDEA\FlyService\public\bootstrap\css\offcanvas.css" rel="stylesheet">
+
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>*@
 <div class="container">
 
     <div class="row row-offcanvas row-offcanvas-right">
@@ -13,7 +102,7 @@
                 <p>Réserver votre vol avec <b>FlyService</b>, c’est l’assurance de trouver facilement et rapidement un vol aux prestations de qualité et au meilleur prix en France comme à l'étranger.</p>
             </div>
             <div class="row">
-                <div class="col-xs-6 col-lg-4" data-ng-repeat="item in data">
+                <div class="col-xs-6 col-lg-4 fondBlanc" data-ng-repeat="item in data">
                     <h2>Vol {{item.id}}</h2>
                     <p><b>Arrival :</b> {{item.start}}</p>
                     <p><b>Date :</b> {{item.start_date}}</p>
