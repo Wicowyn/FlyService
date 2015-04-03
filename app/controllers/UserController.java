@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import entity.OutputResult;
 import entity.User;
 import org.mindrot.jbcrypt.BCrypt;
+import play.Logger;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 import play.libs.Json;
@@ -39,11 +40,13 @@ public class UserController extends Controller {
         UserInput input=Json.fromJson(jsonNode, UserInput.class);
 
         if(input.login==null || input.password==null){
+            Logger.debug("field missing");
             return ok(Json.toJson(new OutputResult(OutputResult.FIELD_MISSING)));
         }
 
         User checkUser=User.find(input.login);
         if(checkUser!=null) {
+            Logger.debug("al exist");
             return ok(Json.toJson(new OutputResult(OutputResult.ENTITY_ALREADY_EXIST)));
         }
 
@@ -54,9 +57,11 @@ public class UserController extends Controller {
 
         JPA.em().persist(user);
 
-        user.setToken(BCrypt.hashpw(user.getId()+user.getLogin(), BCrypt.gensalt()));
+        user.setToken(BCrypt.hashpw(user.getId() + user.getLogin(), BCrypt.gensalt()));
         JPA.em().persist(user);
 
+
+        Logger.debug("success");
         return ok(Json.toJson(new CreateOutput(user)));
     }
 

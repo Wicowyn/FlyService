@@ -16,7 +16,7 @@ public class OutputResult {
 
 
     public static final int FIELD_MISSING=2;
-    public static final int ENTITY_ALREADY_EXIST=6;
+    public static final int ENTITY_ALREADY_EXIST=8;
     public static final int BAD_PASSWORD=6;
     public static final int FIELD_DATE=4;
     public static final int SUCCESSS=42;

@@ -62,9 +62,11 @@ control.controller ( "flyController", function ($scope, $http) {
 });
 
 
-control.controller ( "createFlyController", function ($scope, $http, $filter, $location) {
+control.controller ( "createFlyController", function ($scope, $http, $filter, $location, $rootScope) {
     $scope.hotels = [];
     $scope.hotelSelected = null;
+
+    if($rootScope.token==null) $location.path("/login");
 
     $http.get("/hotel/list", {})
         .success(function(data, status, headers, config) {

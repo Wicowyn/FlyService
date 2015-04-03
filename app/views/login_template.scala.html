@@ -11,9 +11,9 @@
     <form class="form-signin">
         <h2 class="form-signin-heading">Connectez-vous</h2>
         <label for="login" class="sr-only">Login</label>
-        <input type="text" id="login" class="form-control" placeholder="Login" required autofocus>
+        <input type="text" ng-model="login" id="login" class="form-control" placeholder="Login" required autofocus>
         <label for="password" class="sr-only">Mot de passe</label>
-        <input type="password" id="password" class="form-control" placeholder="Mot de passe" required>
+        <input type="password" ng-model="password" id="password" class="form-control" placeholder="Mot de passe" required>
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> Se souvenir de moi
@@ -21,4 +21,7 @@
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="tryLogin()">S'inscrire</button>
     </form>
+    <p class="btn-danger">
+        {{error}}
+    </p>
 </div>

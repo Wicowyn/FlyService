@@ -28,5 +28,8 @@
         <input type="password" id="password" class="form-control" placeholder="Mot de passe" ng-model="password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="tryCreateUser()">Créer l'utilisateur</button>
     </form>
+    <p class="btn-danger">
+        {{error}}
+    </p>
 
 </div> <!-- /container -->
