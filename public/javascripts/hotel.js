@@ -70,11 +70,12 @@ control.controller ( "createHotelController", function ($scope, $http) {
 
         $http.put("/hotel/create", {
             name : $scope.name,
-            adresse : $scope.adr,
+            address : $scope.adr,
             description : $scope.desc
         })
         .success(function(data, status, headers, config) {
             console.log(data);
+                $location.path("/hotel/list");
         });
     };
 });
