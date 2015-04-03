@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import entity.Flight;
 import entity.Hotel;
+import entity.OutputResult;
 import entity.User;
 import play.Logger;
 import play.db.jpa.JPA;
@@ -62,10 +63,10 @@ public class FlightController extends Controller {
 
         ArrayList<Hotel> hotels=new ArrayList<>(input.hotels.length);
 
-        CreateResult result=new CreateResult();
+        OutputResult result=new OutputResult();
 
         if(input.startDate==null || input.endDate==null || input.start==null || input.end==null) {
-            result.status =FIELD_MISSING;
+            result.status =OutputResult.FIELD_MISSING;
 
             Logger.error("Missing field");
             return ok(Json.toJson(result));
@@ -78,13 +79,13 @@ public class FlightController extends Controller {
         }
 
         if(hotels.size()==0) {
-            result.status=FIELD_MISSING;
+            result.status=OutputResult.FIELD_MISSING;
             Logger.error("You need at least one hotel");
             return ok(Json.toJson(result));
         }
 
         if(input.endDate.before(input.startDate)) {
-            result.status=FIELD_DATE;
+            result.status= OutputResult.FIELD_DATE;
             Logger.error("end date can't be after start date");
             return ok(Json.toJson(result));
         }
@@ -114,13 +115,5 @@ public class FlightController extends Controller {
         @JsonProperty("end_date")
         public Date endDate;
         public int[] hotels;
-    }
-
-    public static final int FIELD_MISSING=2;
-    public static final int FIELD_DATE=4;
-    public static final int SUCCESSS=42;
-
-    public static class CreateResult {
-        public Integer status;
     }
 }

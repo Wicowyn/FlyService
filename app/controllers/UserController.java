@@ -1,9 +1,9 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import entity.OutputResult;
 import entity.User;
 import org.mindrot.jbcrypt.BCrypt;
-import play.Logger;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 import play.libs.Json;
@@ -38,7 +38,15 @@ public class UserController extends Controller {
         JsonNode jsonNode=request().body().asJson();
         UserInput input=Json.fromJson(jsonNode, UserInput.class);
 
-        if(input.login==null || input.password==null) forbidden();
+        if(input.login==null || input.password==null){
+            return ok(Json.toJson(new OutputResult(OutputResult.FIELD_MISSING)));
+        }
+
+        User checkUser=User.find(input.login);
+        if(checkUser!=null) {
+            return ok(Json.toJson(new OutputResult(OutputResult.ENTITY_ALREADY_EXIST)));
+        }
+
         User user=new User();
         user.setName(input.name);
         user.setLogin(input.login);
@@ -49,7 +57,7 @@ public class UserController extends Controller {
         user.setToken(BCrypt.hashpw(user.getId()+user.getLogin(), BCrypt.gensalt()));
         JPA.em().persist(user);
 
-        return ok(Json.toJson(user));
+        return ok(Json.toJson(new CreateOutput(user)));
     }
 
     @Transactional
@@ -57,16 +65,19 @@ public class UserController extends Controller {
         JsonNode jsonNode=request().body().asJson();
         UserInput input=Json.fromJson(jsonNode, UserInput.class);
 
-        Logger.debug(input.login);
+        if(input.login==null || input.password==null){
+            return ok(Json.toJson(new OutputResult(OutputResult.FIELD_MISSING)));
+        }
+
         User user=User.find(input.login);
 
         if(user!=null && BCrypt.checkpw(input.password, user.getPassword())) {
             user.setToken(BCrypt.hashpw(user.getId()+user.getLogin(), BCrypt.gensalt()));
             JPA.em().persist(user);
 
-            return ok(Json.toJson(user));
+            return ok(Json.toJson(new CreateOutput(user)));
         }
-        else return forbidden();
+        else return ok(Json.toJson(new OutputResult(OutputResult.BAD_PASSWORD)));
     }
 
     @Transactional(readOnly = true)
@@ -82,5 +93,14 @@ public class UserController extends Controller {
         public String login;
         public String password;
         public String name;
+    }
+
+    public static class CreateOutput extends OutputResult {
+        public User user;
+
+        public CreateOutput(User user) {
+            super();
+            this.user = user;
+        }
     }
 }

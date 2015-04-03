@@ -4,7 +4,7 @@
 
 var control = angular.module("LoginModule", []);
 
-control.controller ( "LoginController", function ($scope, $http) {
+control.controller ( "LoginController", function ($scope, $http, $rootScope) {
     //$scope.name =[ "Lolo" ] ;
 
     $scope.tryLogin= function ( ) {

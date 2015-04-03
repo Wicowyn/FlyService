@@ -62,7 +62,7 @@ control.controller ( "flyController", function ($scope, $http) {
 });
 
 
-control.controller ( "createFlyController", function ($scope, $http, $filter) {
+control.controller ( "createFlyController", function ($scope, $http, $filter, $location) {
     $scope.hotels = [];
     $scope.hotelSelected = null;
 
@@ -95,9 +95,9 @@ control.controller ( "createFlyController", function ($scope, $http, $filter) {
                 }
                 else if(data.status==42) {
                     console.log("created");
+                    $location.path("/fly");
                 }
             });
-        console.log("create");
     };
 });
 
