@@ -12,23 +12,6 @@
                 <p>Réserver votre hôtel avec <b>FlyService</b>, c’est l’assurance de trouver facilement et rapidement un hôtel aux prestations de qualité et au meilleur prix en France comme à l'étranger.</p>
             </div>
 
-            <!----- CREATE HOTEL ------>
-            <div class="container" ng-controller="createHotelController">
-
-                <form class="form-signin">
-                    <h2 class="form-signin-heading">Nouvel hôtel :</h2>
-                    <label for="name" class="sr-only">Nom</label>
-                    <input type="text" id="name" class="form-control" placeholder="Nom" ng-model="name" required autofocus>
-                    <label for="adr" class="sr-only">Adresse</label>
-                    <input type="text" id="adr" class="form-control" placeholder="Adresse" ng-model="adr" required>
-                    <label for="Description" class="sr-only">Description</label>
-                    <input type="text" id="Description" class="form-control" placeholder="Description" ng-model="desc" required>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="tryCreateHotel()">Ajouter un hotel</button>
-                </form>
-
-            </div> <!-- /container -->
-
-
             <!----- LIST HOTEL ------>
             <div class="row" ng-controller="listHotelController">
                 <div class="col-xs-6 col-lg-4" data-ng-repeat="item in data">

@@ -16,11 +16,11 @@ myApp.config(['$routeProvider',
                 controller: 'flyController'
             })
             .when('/hotel', {
-                templateUrl: 'template/hotel',
+                templateUrl: 'template/hotelCreate',
                 controller: 'listHotelController'
             })
             .when('/createhotel', {
-                templateUrl: 'template/hotel',
+                templateUrl: 'template/hotelList',
                 controller: 'createHotelController'
             })
             .when('/login', {
