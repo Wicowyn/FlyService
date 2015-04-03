@@ -1,38 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-    <body>
-        <div class="container">
-            <div class="row row-offcanvas row-offcanvas-right">
-                <form class="form-signin">
-                    <h2 class="form-signin-heading">Créer un vol</h2>
-                    <label for="inputLogin" class="sr-only">CREATE</label>
 
-                    <input type="text" id="start" ng-model="start" class="form-control" placeholder="Lieux de départ" required autofocus>
-                    <input type="text" id="end" ng-model="end" class="form-control" placeholder="Lieux d\'arrivée" required autofocus>
-                    <input type="date" id="end_date" ng-model="start_date" class="form-control" required autofocus>
-                    <input type="date" id="start_date" ng-model="end_date" class="form-control" required autofocus>
+<div class="row row-offcanvas row-offcanvas-right">
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Créer un vol</h2>
+        <label for="inputLogin" class="sr-only">CREATE</label>
 
-                    <select id="yolo" class="form-control" ng-model="hotelSelected" ng-options="h.name for h in hotels">
-                    </select>
+        <input type="text" id="start" ng-model="start" class="form-control" placeholder="Lieux de départ" required autofocus>
+        <input type="text" id="end" ng-model="end" class="form-control" placeholder="Lieux d\'arrivée" required autofocus>
+        <input type="date" id="end_date" ng-model="start_date" class="form-control" required autofocus>
+        <input type="date" id="start_date" ng-model="end_date" class="form-control" required autofocus>
 
-                    <div>
-                        <div class="col-xs-6 col-lg-4" data-ng-repeat="item in hotelChoosed">
-                            <h2>{{item.name|truncate:17}}</h2>
-                        </div>
-                    </div>
+        <select id="yolo" class="form-control" ng-model="hotelSelected" ng-options="h.name for h in hotels">
+        </select>
 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="create()">Enregistrer</button>
-                </form>
-                <p class="btn-danger">
-                    {{error}}
-                </p>
-            </div> <!--/row-->
+        <div>
+            <div class="col-xs-6 col-lg-4" data-ng-repeat="item in hotelChoosed">
+                <h2>{{item.name|truncate:17}}</h2>
+            </div>
+        </div>
 
-            <hr>
-
-            <footer>
-                <p>&copy; Company 2014</p>
-            </footer>
-        </div> <!--/.container-->
-    </body>
-</html>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="create()">Enregistrer</button>
+    </form>
+    <p class="btn-danger">
+        {{error}}
+    </p>
+</div> <!--/row-->
