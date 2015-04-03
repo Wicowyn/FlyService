@@ -16,7 +16,7 @@
             <div class="row" ng-controller="listHotelController">
                 <div class="col-xs-6 col-lg-4" data-ng-repeat="item in data">
                     <h2>{{item.name|truncate:17}}</h2>
-                    <p><b>Adresse : </b> ng-show="item.address != null">{{item.address|truncate:28}}</p>
+                    <p><b>Adresse : </b><p ng-show="item.address != null">{{item.address|truncate:28}}</p>
                     <p><b>Description : </b></p>
                     <p ng-show="item.description != null">{{item.description|truncate:70}}</p>
                     <p ng-show="item.description == null">Aucune description<br/> <br/></p>
