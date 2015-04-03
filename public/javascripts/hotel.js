@@ -64,7 +64,7 @@ control.controller ( "listHotelController", function ($scope, $http) {
 });
 
 /********************* CREATION D'UN HOTEL ********************/
-control.controller ( "createHotelController", function ($scope, $http) {
+control.controller ( "createHotelController", function ($scope, $http, $location) {
 
     $scope.tryCreateHotel= function ( ) {
 
