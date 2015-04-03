@@ -103,8 +103,11 @@
             </div>
             <div class="row">
                 <div class="col-xs-6 col-lg-4 fontBlanc" data-ng-repeat="item in data">
-                    <h2>{{item.start}} à {{item.end}}</h2>
-                    <p>De {{item.start}} le {{item.start_date}} à {{item.end}} le {{item.end_date}}</p>
+                    <h2>Vol {{item.id}}</h2>
+                    <p><b>Arrival :</b> {{item.start}}</p>
+                    <p><b>Date :</b> {{item.start_date}}</p>
+                    <p><b>Departure :</b> {{item.end}}</p>
+                    <p><b>Date :</b> {{item.end_date}}</p>
                     <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                     <p><a class="btn btn-default" ng-click="onDelete($index)">Delete</a></p>
                 </div> <!--/.col-xs-6.col-lg-4-->
@@ -117,7 +120,7 @@
                 <a href="#fly" class="list-group-item">Nos Vols</a>
                 <a href="#listhotel" class="list-group-item">Nos Hôtels</a>
                 <a class="list-group-item active" align="center">Créer</a>
-                <a href="#createfly" class="list-group-item">Un Vol</a>
+                <a href="#create_fly" class="list-group-item">Un Vol</a>
                 <a href="#createhotel" class="list-group-item">Un Hôtel</a>
             </div>
         </div> <!--/.sidebar-offcanvas-->

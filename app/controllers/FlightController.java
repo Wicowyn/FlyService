@@ -61,6 +61,14 @@ public class FlightController extends Controller {
 
         ArrayList<Hotel> hotels=new ArrayList<>(input.hotels.length);
 
+        CreateResult result=new CreateResult();
+
+        if(input.startDate==null || input.endDate==null || input.start==null || input.end==null) {
+            result.resultCode=FIELD_MISSING;
+
+            return badRequest(Json.toJson(result));
+        }
+
         for(int id : input.hotels) {
             Hotel hotel=JPA.em().find(Hotel.class, id);
 
@@ -100,5 +108,13 @@ public class FlightController extends Controller {
         @JsonProperty("end_date")
         public Date endDate;
         public int[] hotels;
+    }
+
+    public static final int FIELD_MISSING=2;
+    public static final int SUCCESSS=42;
+
+    public static class CreateResult {
+        public Integer status;
+        public Integer resultCode;
     }
 }

@@ -34,6 +34,13 @@ public class Application extends Controller {
         return ok(fly_template.render());
     }
 
+    public static Result createFlyTemplate() {
+        return ok(create_fly_template.render());
+    }
+
+    public static Result hotelTemplate() {
+        return ok(hotel_template.render());
+    }
     public static Result hotelListTemplate() {
         return ok(hotelList_template.render());
     }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-right">
+                <form class="form-signin">
+                    <h2 class="form-signin-heading">Créer un vol</h2>
+                    <label for="inputLogin" class="sr-only">CREATE</label>
+
+                    <input type="text" id="start" class="form-control" placeholder="Lieux de départ" required autofocus>
+                    <input type="text" id="end" class="form-control" placeholder="Lieux d\'arrivé" required autofocus>
+                    <input type="date" id="end_date" class="form-control" required autofocus>
+                    <input type="date" id="start_date" class="form-control" required autofocus>
+
+                    <select if="yolo" class="form-control" ng-model="hotelSelected" ng-options="h.name for h in hotels">
+                    </select>
+
+                    <div>
+                        <div class="col-xs-6 col-lg-4" data-ng-repeat="item in hotelChoosed">
+                            <h2>{{item.name|truncate:17}}</h2>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="create()">Enregistrer</button>
+                </form>
+            </div> <!--/row-->
+
+            <hr>
+
+            <footer>
+                <p>&copy; Company 2014</p>
+            </footer>
+        </div> <!--/.container-->
+    </body>
+</html>
