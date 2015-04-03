@@ -73,8 +73,8 @@ control.controller ( "createHotelController", function ($scope, $http) {
             adresse : $scope.adr,
             description : $scope.desc
         })
-            .success(function(data, status, headers, config) {
-                console.log(data);
-            });
+        .success(function(data, status, headers, config) {
+            console.log(data);
+        });
     };
 });
