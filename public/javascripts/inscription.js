@@ -4,7 +4,7 @@
 
 var control = angular.module("createUserModule", []);
 
-control.controller ( "createUserController", function ($scope, $http) {
+control.controller ( "createUserController", function ($scope, $http, $location) {
 
     $scope.tryCreateUser= function ( ) {
 
@@ -17,7 +17,7 @@ control.controller ( "createUserController", function ($scope, $http) {
                 console.log(data);
                 if(data.status==42) {
                     //$rootScope.token=data.token;
-                    $location.path("/hotel")
+                    $location.path("/hotel");
                 }
                 else if(data.status==2) {
                     $scope.error="Champs manquant";

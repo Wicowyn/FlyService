@@ -66,7 +66,7 @@ control.controller ( "createFlyController", function ($scope, $http, $filter, $l
     $scope.hotels = [];
     $scope.hotelSelected = null;
 
-    if($rootScope.token==null) $location.path("/login");
+    //if($rootScope.token==null) $location.path("/login");
 
     $http.get("/hotel/list", {})
         .success(function(data, status, headers, config) {
