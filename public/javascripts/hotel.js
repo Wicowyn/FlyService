@@ -75,7 +75,7 @@ control.controller ( "createHotelController", function ($scope, $http, $location
         })
         .success(function(data, status, headers, config) {
             console.log(data);
-                $location.path("/hotel/list");
+                $location.path("/listhotel");
         });
     };
 });
