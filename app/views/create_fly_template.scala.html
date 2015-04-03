@@ -7,12 +7,12 @@
                     <h2 class="form-signin-heading">Créer un vol</h2>
                     <label for="inputLogin" class="sr-only">CREATE</label>
 
-                    <input type="text" id="start" class="form-control" placeholder="Lieux de départ" required autofocus>
-                    <input type="text" id="end" class="form-control" placeholder="Lieux d\'arrivé" required autofocus>
-                    <input type="date" id="end_date" class="form-control" required autofocus>
-                    <input type="date" id="start_date" class="form-control" required autofocus>
+                    <input type="text" id="start" ng-model="start" class="form-control" placeholder="Lieux de départ" required autofocus>
+                    <input type="text" id="end" ng-model="end" class="form-control" placeholder="Lieux d\'arrivée" required autofocus>
+                    <input type="date" id="end_date" ng-model="start_date" class="form-control" required autofocus>
+                    <input type="date" id="start_date" ng-model="end_date" class="form-control" required autofocus>
 
-                    <select if="yolo" class="form-control" ng-model="hotelSelected" ng-options="h.name for h in hotels">
+                    <select id="yolo" class="form-control" ng-model="hotelSelected" ng-options="h.name for h in hotels">
                     </select>
 
                     <div>
@@ -23,6 +23,9 @@
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="create()">Enregistrer</button>
                 </form>
+                <p class="btn-danger">
+                    {{error}}
+                </p>
             </div> <!--/row-->
 
             <hr>

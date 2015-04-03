@@ -62,7 +62,7 @@ control.controller ( "flyController", function ($scope, $http) {
 });
 
 
-control.controller ( "createFlyController", function ($scope, $http) {
+control.controller ( "createFlyController", function ($scope, $http, $filter) {
     $scope.hotels = [];
     $scope.hotelSelected = null;
 
@@ -74,18 +74,30 @@ control.controller ( "createFlyController", function ($scope, $http) {
 
     $scope.hotelChoosed = [];
 
+
+
     $scope.create= function ( ) {
-        console.log("create");
         $http.put("/flight", {
             "start" : $scope.start,
             "end" : $scope.end,
-            "start_date" : $scope.start_date,
-            "end_date" : $scope.end_date,
+            "start_date" : $filter('date')($scope.start_date, "dd-MM-yyyy"),
+            "end_date" : $filter('date')($scope.end_date, "dd-MM-yyyy"),
             "hotels" : [$scope.hotelSelected.id]
         })
             .success(function(data, status, headers, config) {
                 console.log(data);
+
+                if(data.status==2) {
+                    $scope.error="Champs manquant";
+                }
+                else if(data.status==4) {
+                    $scope.error="Les dates ne sont pas correct";
+                }
+                else if(data.status==42) {
+                    console.log("created");
+                }
             });
+        console.log("create");
     };
 });
 

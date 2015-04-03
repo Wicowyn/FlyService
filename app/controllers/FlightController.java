@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import entity.Flight;
 import entity.Hotel;
 import entity.User;
+import play.Logger;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 import play.libs.Json;
@@ -64,9 +65,10 @@ public class FlightController extends Controller {
         CreateResult result=new CreateResult();
 
         if(input.startDate==null || input.endDate==null || input.start==null || input.end==null) {
-            result.resultCode=FIELD_MISSING;
+            result.status =FIELD_MISSING;
 
-            return badRequest(Json.toJson(result));
+            Logger.error("Missing field");
+            return ok(Json.toJson(result));
         }
 
         for(int id : input.hotels) {
@@ -76,11 +78,15 @@ public class FlightController extends Controller {
         }
 
         if(hotels.size()==0) {
-            return badRequest("You need at least one hotel");
+            result.status=FIELD_MISSING;
+            Logger.error("You need at least one hotel");
+            return ok(Json.toJson(result));
         }
 
         if(input.endDate.before(input.startDate)) {
-            return badRequest("end date can't be after start date");
+            result.status=FIELD_DATE;
+            Logger.error("end date can't be after start date");
+            return ok(Json.toJson(result));
         }
 
         flight.setHotels(hotels);
@@ -111,10 +117,10 @@ public class FlightController extends Controller {
     }
 
     public static final int FIELD_MISSING=2;
+    public static final int FIELD_DATE=4;
     public static final int SUCCESSS=42;
 
     public static class CreateResult {
         public Integer status;
-        public Integer resultCode;
     }
 }
